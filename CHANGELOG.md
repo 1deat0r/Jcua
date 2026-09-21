@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased (0.1.3 s1-forms)
+## 0.1.3 — 2026-09-21
 - Vendored `demo.jsonl` (196 real rows) + torch-optional scorer + `eval --s1`.
 - `golden/` skips METRIC tasks; retrieval gate unchanged.
 ## 0.1.2 — 2026-09-21
