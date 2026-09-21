@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased (0.1.4 bench)
+## 0.1.4 — 2026-09-21
 - Sandboxed jcua-vs-cua offline benchmark (Docker, no network/keys): docs/BENCH.md + evals/bench harness.
 
 ## 0.1.3 — 2026-09-21
