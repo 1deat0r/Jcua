@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 -m py_compile src/jcua/*.py
+      - run: pip install pytest
+      - run: python3 -m pytest tests/ -q
       - run: python3 scripts/check_no_secrets.py
       - run: pip install -e . && jcua eval --golden || true
   freshness:

@@ -11,6 +11,9 @@ def version():
         tag = subprocess.run(["git", "describe", "--tags", "--abbrev=0"], capture_output=True, text=True).stdout.strip()
     except Exception:
         tag = ""
+    if not tag:
+        m = re.search(re.escape(START) + r"\n> Version `[^`]+` · latest tag `([^`]+)`", pathlib.Path("README.md").read_text())
+        tag = m.group(1) if m else ""
     return v, tag
 
 def managed_block(v, tag):
