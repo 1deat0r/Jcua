@@ -1,7 +1,7 @@
 # Jcua — Jev Computer Use Agent
 
 <!-- JCUA-MANAGED-START -->
-> Version `0.1.0` · latest tag `v0.1.0` · [Releases](https://github.com/1deat0r/Jcua/releases) · [Changelog](CHANGELOG.md) · [Roadmap](ROADMAP.md) · [Milestones](https://github.com/1deat0r/Jcua/milestones) · ![ci](https://github.com/1deat0r/Jcua/actions/workflows/ci.yml/badge.svg)
+> Version `0.1.1` · latest tag `v0.1.1` · [Releases](https://github.com/1deat0r/Jcua/releases) · [Changelog](CHANGELOG.md) · [Roadmap](ROADMAP.md) · [Milestones](https://github.com/1deat0r/Jcua/milestones) · ![ci](https://github.com/1deat0r/Jcua/actions/workflows/ci.yml/badge.svg)
 <!-- JCUA-MANAGED-END -->
 
 Cross-platform self-improving computer-use agent. Fork-offshoot of [trycua/cua](https://github.com/trycua/cua) (MIT), re-brained around TypeSafe Jev decisions + a Jeva-style self-improvement loop.
