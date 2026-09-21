@@ -1,0 +1,12 @@
+name: Bug
+description: Something is not working
+labels: [bug]
+body:
+  - type: input
+    id: platform
+    attributes: {label: Platform, placeholder: "linux / windows / macos / android"}
+    validations: {required: true}
+  - type: textarea
+    id: what
+    attributes: {label: What happened, description: Expected vs actual + fresh-state evidence}
+    validations: {required: true}

@@ -1,0 +1,11 @@
+name: Feature
+description: New capability
+labels: [enhancement]
+body:
+  - type: textarea
+    id: why
+    attributes: {label: Why, description: Problem + which platform/target it serves}
+    validations: {required: true}
+  - type: textarea
+    id: gate
+    attributes: {label: Jev gate, description: New decider? Fail-safe direction + threshold, or none}
