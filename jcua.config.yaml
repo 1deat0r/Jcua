@@ -1,0 +1,13 @@
+models:
+  decider: jev-latest
+  text_helper: null  # OpenAI-compatible model for TYPE_TEXT only, set via TEXT_MODEL
+budgets:
+  default_usd: 0.50
+  max_actions: 60
+jev:
+  enabled: false
+  confidence_floor: 0.75
+  keep_threshold: 0.2
+targets:
+  default: linux
+  supported: [linux, windows, macos, android]
