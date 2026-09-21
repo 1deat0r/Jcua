@@ -9,3 +9,4 @@ memory/local*
 dist/
 build/
 *.egg-info/
+evals/bench/ctx/
