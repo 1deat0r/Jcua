@@ -1,6 +1,6 @@
 [project]
 name = "jcua"
-version = "0.1.0"
+version = "0.1.1"
 description = "Jev Computer Use Agent — cross-platform self-improving computer-use (cua offshoot)"
 readme = "README.md"
 requires-python = ">=3.12"
