@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased (0.1.5 fill-decider)
+- `fill.py` planner + `jcua fill [--s1]`: heuristic fallback everywhere, S1-live 3/3 on fixture.
+
 ## 0.1.4 — 2026-09-21
 - Sandboxed jcua-vs-cua offline benchmark (Docker, no network/keys): docs/BENCH.md + evals/bench harness.
 

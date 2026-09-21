@@ -24,5 +24,7 @@ Run: `python3 scripts/score_s1_demo.py --upstream <cua-checkout> [--n 196]`
 ## Integration plan
 
 - 0.1.3: vendored corpus + scorer + this doc (no torch in CI).
-- Later: ONNX export for dependency-free inference; `fill`/`check`/`click`/`skip`
-  executor ordering into `platforms/linux`; synth-recipe reuse for non-form tasks.
+- 0.1.5: `src/jcua/fill.py` plans fills from elements + entities (heuristic fallback),
+  `jcua fill --s1` scores with the checkpoint (fixture 3/3 @~1.0 live, heuristic 3/3).
+- Later: ONNX export for dependency-free inference; `set_value`/`click` dispatch into
+  `platforms/linux` via cua-driver; synth-recipe reuse for non-form tasks.

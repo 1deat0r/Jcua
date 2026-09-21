@@ -43,6 +43,21 @@ def cmd_evolve(a):
     if a.apply and plan.get("ref"):
         print(json.dumps(tighten_preview(plan["ref"])))
 
+def cmd_fill(a):
+    import json
+    from .fill import build_examples, decide, s1_scorer
+    fx = json.load(open(a.fixture))
+    exs = build_examples(fx["task"], fx["form"], fx["elements"], fx["entities"])
+    scorer = None
+    if a.s1:
+        try:
+            import os
+            scorer = s1_scorer(a.checkpoint or os.environ.get('S1_CHECKPOINT', ''), a.upstream)
+        except Exception as e:
+            print(json.dumps({'skip': (type(e).__name__ + ': ' + str(e))[:160]}))
+            return
+    print(json.dumps(decide(exs, scorer), indent=1))
+
 def cmd_library(a):
     from .registry import load_skills, validate_skill, audit
     if a.action == "audit":
@@ -69,6 +84,7 @@ def main():
     s = p.add_subparsers(dest="c", required=True)
     r = s.add_parser("run"); r.add_argument("task"); r.add_argument("--budget", default="0.50"); r.add_argument("--target", default="linux"); r.add_argument("--force", action="store_true"); r.set_defaults(f=cmd_run)
     gd = s.add_parser("guard"); gd.add_argument("action"); gd.add_argument("--floor", type=float, default=None); gd.set_defaults(f=cmd_guard)
+    fl = s.add_parser("fill"); fl.add_argument("--fixture", default="evals/s1-forms/fixture-northwind.json"); fl.add_argument("--s1", action="store_true"); fl.add_argument("--checkpoint", default=None); fl.add_argument("--upstream", default=None); fl.set_defaults(f=cmd_fill)
     ev = s.add_parser("evolve"); ev.add_argument("--once", action="store_true"); ev.add_argument("--apply", action="store_true"); ev.set_defaults(f=cmd_evolve)
     l = s.add_parser("library"); l.add_argument("action", nargs="?", default="list"); l.set_defaults(f=cmd_library)
     e = s.add_parser("eval"); e.add_argument("--golden", action="store_true"); e.add_argument("--s1", action="store_true"); e.add_argument("--n", type=int, default=196); e.set_defaults(f=cmd_eval)

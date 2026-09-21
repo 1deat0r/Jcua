@@ -1,0 +1,14 @@
+{
+  "task": "fill the form from the document, then submit",
+  "form": "Northwind Clinic - New Patient Registration",
+  "elements": [
+    {"role": "Edit", "label": "First name", "value": ""},
+    {"role": "Edit", "label": "Phone number", "value": ""},
+    {"role": "Edit", "label": "City", "value": ""}
+  ],
+  "entities": [
+    {"label": "First name", "value": "Amara"},
+    {"label": "Phone number", "value": "(503) 555-0142"},
+    {"label": "City", "value": "Portland"}
+  ]
+}
