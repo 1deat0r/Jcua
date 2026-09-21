@@ -1,5 +1,5 @@
 """jcua CLI: run (retrieve-or-create) / library list|audit / eval --golden."""
-import argparse, json, os, time
+import argparse, json, os, sys, time
 
 def cmd_guard(a):
     from .jev_gates import guard_action, load_jev_config
@@ -53,6 +53,11 @@ def cmd_library(a):
         print(f"{s['ref']} [{s['status']}] cluster={s['cluster']} value={s['value_score']}" + (f" ERR:{errs}" if errs else ""))
 
 def cmd_eval(a):
+    if a.s1:
+        import runpy
+        sys.argv = ["score_s1_demo.py", "--n", str(a.n)]
+        runpy.run_path(os.path.join("scripts", "score_s1_demo.py"), run_name="__main__")
+        return
     from .golden import run_all, golden_gate
     results = run_all()
     for r in results:
@@ -66,7 +71,7 @@ def main():
     gd = s.add_parser("guard"); gd.add_argument("action"); gd.add_argument("--floor", type=float, default=None); gd.set_defaults(f=cmd_guard)
     ev = s.add_parser("evolve"); ev.add_argument("--once", action="store_true"); ev.add_argument("--apply", action="store_true"); ev.set_defaults(f=cmd_evolve)
     l = s.add_parser("library"); l.add_argument("action", nargs="?", default="list"); l.set_defaults(f=cmd_library)
-    e = s.add_parser("eval"); e.add_argument("--golden", action="store_true"); e.set_defaults(f=cmd_eval)
+    e = s.add_parser("eval"); e.add_argument("--golden", action="store_true"); e.add_argument("--s1", action="store_true"); e.add_argument("--n", type=int, default=196); e.set_defaults(f=cmd_eval)
     a = p.parse_args(); a.f(a)
 
 if __name__ == "__main__":

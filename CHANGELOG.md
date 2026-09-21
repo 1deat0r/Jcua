@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased (0.1.3 s1-forms)
+- Vendored `demo.jsonl` (196 real rows) + torch-optional scorer + `eval --s1`.
+- `golden/` skips METRIC tasks; retrieval gate unchanged.
 ## 0.1.2 — 2026-09-21
 - `evolve --once` dry-run preview + `--apply` promotion (`uses>=3 sr>=0.8 value>=median` + golden gate).
 - Live: hello-jcua promoted candidate→default, audit pass, golden 3/3.
