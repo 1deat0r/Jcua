@@ -8,8 +8,9 @@ def list_tasks():
     if not os.path.isdir(GOLDEN):
         return out
     for name in sorted(os.listdir(GOLDEN)):
-        tf = os.path.join(GOLDEN, name, "task.md")
-        if os.path.isfile(tf):
+        dd = os.path.join(GOLDEN, name)
+        tf = os.path.join(dd, "task.md")
+        if os.path.isfile(tf) and not os.path.exists(os.path.join(dd, "METRIC")):
             out.append({"name": name, "task": open(tf).read()})
     return out
 
