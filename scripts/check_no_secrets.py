@@ -5,6 +5,8 @@ pat = re.compile(r"(TYPESAFE_API_KEY\s*=\s*['\"][^'\"]+|sk-ant-|sk-[A-Za-z0-9]{8
 bad = []
 for r in roots:
     for p in pathlib.Path(r).rglob("*"):
+        if p.name == "check_no_secrets.py":
+            continue
         if p.is_file() and p.suffix in (".py", ".md", ".yaml", ".yml", ".json", ".sh"):
             try: t = p.read_text(errors="ignore")
             except Exception: continue
