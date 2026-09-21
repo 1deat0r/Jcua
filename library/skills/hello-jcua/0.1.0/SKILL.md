@@ -2,7 +2,7 @@
 name: hello-jcua
 version: 0.1.0
 cluster: general
-status: candidate
+status: default
 value_score: 0.5
 triggers: [hello, smoke test, capture, click]
 ---

@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased (0.1.2 evolve)
+- `evolve --once` dry-run preview + `--apply` promotion (`uses>=3 sr>=0.8 value>=median` + golden gate).
+- Live: hello-jcua promoted candidate→default, audit pass, golden 3/3.
 ## 0.1.1 — 2026-09-21
 - Jev guard #1 (default OFF): choice-over-criteria schema, fail-safe escalate, floor 0.75. Live probe harmless APPROVE 1.0 / dangerous ESCALATE 1.0; `run` blocks unless `--force`.
 - Library registry + retriever (retrieve-or-create, threshold 0.46) + traces/trace.jsonl + library.db stats.
