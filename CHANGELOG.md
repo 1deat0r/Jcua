@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased (0.1.2 evolve)
+## 0.1.2 — 2026-09-21
 - `evolve --once` dry-run preview + `--apply` promotion (`uses>=3 sr>=0.8 value>=median` + golden gate).
 - Live: hello-jcua promoted candidate→default, audit pass, golden 3/3.
 ## 0.1.1 — 2026-09-21
