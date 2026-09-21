@@ -32,6 +32,17 @@ def cmd_run(a):
     record_run(a.task, ref, line["reused"], 0.64 if line["reused"] else 0.5)
     print(json.dumps({"reused": line["reused"], "ref": ref, "reason": reason}))
 
+def cmd_evolve(a):
+    from .evolve import evolve_once, tighten_preview
+    from .registry import load_skills
+    if not a.once:
+        print(json.dumps({"hint": "usage: jcua evolve --once [--apply]"}))
+        return
+    plan = evolve_once(apply=a.apply)
+    print(json.dumps(plan))
+    if a.apply and plan.get("ref"):
+        print(json.dumps(tighten_preview(plan["ref"])))
+
 def cmd_library(a):
     from .registry import load_skills, validate_skill, audit
     if a.action == "audit":
@@ -53,6 +64,7 @@ def main():
     s = p.add_subparsers(dest="c", required=True)
     r = s.add_parser("run"); r.add_argument("task"); r.add_argument("--budget", default="0.50"); r.add_argument("--target", default="linux"); r.add_argument("--force", action="store_true"); r.set_defaults(f=cmd_run)
     gd = s.add_parser("guard"); gd.add_argument("action"); gd.add_argument("--floor", type=float, default=None); gd.set_defaults(f=cmd_guard)
+    ev = s.add_parser("evolve"); ev.add_argument("--once", action="store_true"); ev.add_argument("--apply", action="store_true"); ev.set_defaults(f=cmd_evolve)
     l = s.add_parser("library"); l.add_argument("action", nargs="?", default="list"); l.set_defaults(f=cmd_library)
     e = s.add_parser("eval"); e.add_argument("--golden", action="store_true"); e.set_defaults(f=cmd_eval)
     a = p.parse_args(); a.f(a)
